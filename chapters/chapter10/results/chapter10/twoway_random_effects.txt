@@ -1,0 +1,33 @@
+Twoways effects Random Effect Model 
+   (Swamy-Arora's transformation)
+
+Call:
+plm::plm(formula = linvest ~ lvalue + lcapital, data = pdata, 
+    effect = "twoways", model = "random", random.method = "swar")
+
+Balanced Panel: n = 10, T = 20, N = 200
+
+Effects:
+                  var std.dev share
+idiosyncratic 0.05254 0.22922 0.163
+individual    0.25130 0.50130 0.778
+time          0.01919 0.13854 0.059
+theta: 0.8983 (id) 0.5364 (time) 0.5346 (total)
+
+Residuals:
+     Min.   1st Qu.    Median   3rd Qu.      Max. 
+-0.951741 -0.157697  0.029194  0.152885  0.648709 
+
+Coefficients:
+             Estimate Std. Error z-value  Pr(>|z|)    
+(Intercept) -0.196773   0.493159 -0.3990    0.6899    
+lvalue       0.551017   0.076791  7.1756 7.201e-13 ***
+lcapital     0.175270   0.030980  5.6576 1.535e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Total Sum of Squares:    19.943
+Residual Sum of Squares: 12.445
+R-Squared:      0.37595
+Adj. R-Squared: 0.36962
+Chisq: 118.681 on 2 DF, p-value: < 2.22e-16

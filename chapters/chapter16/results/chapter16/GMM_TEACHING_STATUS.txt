@@ -1,0 +1,2 @@
+GMM ESTIMATOR FAILED: not a validated case estimator.
+system is computationally singular: reciprocal condition number = 1.03816e-19

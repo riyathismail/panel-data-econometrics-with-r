@@ -1,0 +1,9 @@
+
+	Regression-based Hausman test, vcov: function(x) plm::vcovHC(x, method
+	= "arellano", type = "HC1",
+	Regression-based Hausman test, vcov: cluster = "group")
+
+data:  linvest ~ lvalue + lcapital
+chisq = 7.7373, df = 2, p-value = 0.02089
+alternative hypothesis: one model is inconsistent
+

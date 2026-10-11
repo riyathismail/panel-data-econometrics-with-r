@@ -1,0 +1,5 @@
+"model","group","statistic","df","p.value"
+"Level two-way FE","Firm",28.8845735873302,9,0.000677736416306225
+"Level two-way FE","Teaching period",36.0779793522167,19,0.0103251700030386
+"Growth + period FE","Firm",17.7952297431328,9,0.0376249443095805
+"Growth + period FE","Teaching period",39.0854752418586,18,0.00277528552202257

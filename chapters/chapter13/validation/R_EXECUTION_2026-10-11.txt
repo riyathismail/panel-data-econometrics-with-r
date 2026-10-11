@@ -1,0 +1,26 @@
+During startup - Warning messages:
+
+1: Setting LC_COLLATE=C.UTF-8 failed 
+
+2: Setting LC_CTYPE=C.UTF-8 failed 
+
+3: Setting LC_MONETARY=C.UTF-8 failed 
+
+4: Setting LC_TIME=C.UTF-8 failed 
+
+Registered S3 method overwritten by 'clubSandwich':
+
+  method    from    
+
+  bread.mlm sandwich
+
+Warning message:
+
+`geom_errorbarh()` was deprecated in ggplot2 4.0.0.
+
+i Please use the `orientation` argument of `geom_errorbar()` instead. 
+
+`height` was translated to `width`.
+
+Chapter 13 robust-inference benchmark reproduced successfully.
+

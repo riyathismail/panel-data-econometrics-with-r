@@ -1,0 +1,6 @@
+PDF: ../../Chapter_21_R_RStudio_Review.pdf
+Pages: 15
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False

@@ -1,0 +1,45 @@
+$LLC
+
+	Levin-Lin-Chu Unit-Root Test (ex. var.: Individual Intercepts)
+
+data:  pd$linvest
+z = -1.0023, p-value = 0.1581
+alternative hypothesis: stationarity
+
+
+$IPS
+
+	Im-Pesaran-Shin Unit-Root Test (ex. var.: Individual Intercepts)
+
+data:  pd$linvest
+Wtbar = 0.64763, p-value = 0.7414
+alternative hypothesis: stationarity
+
+
+$Fisher
+
+	Maddala-Wu Unit-Root Test (ex. var.: Individual Intercepts)
+
+data:  pd$linvest
+chisq = 19.159, df = 20, p-value = 0.5115
+alternative hypothesis: stationarity
+
+
+$Hadri
+
+	Hadri Test (ex. var.: Individual Intercepts) (Heterosked. Consistent)
+
+data:  pd$linvest
+z = 25.077, p-value < 2.2e-16
+alternative hypothesis: at least one series has a unit root
+
+
+$CIPS_lag1
+
+	Pesaran's CIPS test for unit roots
+
+data:  pd$linvest
+CIPS test = -2.083, lag order = 1, p-value = 0.1
+alternative hypothesis: Stationarity
+
+

@@ -1,0 +1,65 @@
+[
+  {
+    "test": "python_engle_granger.csv",
+    "column": "statistic",
+    "rows": 10,
+    "maximum_error": 4.760636329592671e-13,
+    "passed": true
+  },
+  {
+    "test": "python_engle_granger.csv",
+    "column": "p_value",
+    "rows": 10,
+    "maximum_error": 2.485234240623413e-13,
+    "passed": true
+  },
+  {
+    "test": "python_adf_individual.csv",
+    "column": "statistic",
+    "rows": 90,
+    "maximum_error": 3.5083047578154947e-14,
+    "passed": true
+  },
+  {
+    "test": "python_adf_individual.csv",
+    "column": "p_value",
+    "rows": 90,
+    "maximum_error": 1.2712053631958042e-14,
+    "passed": true
+  },
+  {
+    "test": "python_adf_individual.csv",
+    "column": "lag",
+    "rows": 90,
+    "maximum_error": 0.0,
+    "passed": true
+  },
+  {
+    "test": "python_fisher_adf.csv",
+    "column": "Fisher",
+    "rows": 9,
+    "maximum_error": 5.115907697472721e-13,
+    "passed": true
+  },
+  {
+    "test": "python_fisher_adf.csv",
+    "column": "p_value",
+    "rows": 9,
+    "maximum_error": 5.551115123125783e-16,
+    "passed": true
+  },
+  {
+    "test": "python_fisher_adf.csv",
+    "column": "reject5",
+    "rows": 9,
+    "maximum_error": 0.0,
+    "passed": true
+  },
+  {
+    "test": "python_fisher_adf.csv",
+    "column": "reject10",
+    "rows": 9,
+    "maximum_error": 0.0,
+    "passed": true
+  }
+]

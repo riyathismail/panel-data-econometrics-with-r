@@ -1,0 +1,146 @@
+[
+  {
+    "chapter": 1,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\n"
+  },
+  {
+    "chapter": 2,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\n"
+  },
+  {
+    "chapter": 3,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\n"
+  },
+  {
+    "chapter": 5,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\n"
+  },
+  {
+    "chapter": 6,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\n"
+  },
+  {
+    "chapter": 7,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\n"
+  },
+  {
+    "chapter": 8,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 8 benchmark reproduced; manual FD and plm(model='fd') coefficients agree.\r\n"
+  },
+  {
+    "chapter": 9,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 9 FE benchmark reproduced successfully by LSDV, manual within, and plm within estimators.\r\n"
+  },
+  {
+    "chapter": 10,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 10 RE benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 11,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nWarning message:\r\nIn sqrt(diag(V_mundlak)) : NaNs produced\r\nWarning message:\r\nIn sqrt(diag(V_mundlak)) : NaNs produced\r\nChapter 11 model-selection benchmarks reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 13,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nRegistered S3 method overwritten by 'clubSandwich':\r\n  method    from    \r\n  bread.mlm sandwich\r\nWarning message:\r\n`geom_errorbarh()` was deprecated in ggplot2 4.0.0.\r\ni Please use the `orientation` argument of `geom_errorbar()` instead. \r\n`height` was translated to `width`.\r\nChapter 13 robust-inference benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 14,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "ta\\Roaming\\R\\config\\R\\modelsummary', reason 'Permission denied'\r\n6: In dir.create(dn, recursive = TRUE) :\r\n  cannot create dir 'C:\\Users\\MSI\\AppData\\Roaming\\R\\config\\R\\modelsummary', reason 'Permission denied'\r\n7: In dir.create(dn, recursive = TRUE) :\r\n  cannot create dir 'C:\\Users\\MSI\\AppData\\Roaming\\R\\config\\R\\modelsummary', reason 'Permission denied'\r\n8: In dir.create(dn, recursive = TRUE) :\r\n  cannot create dir 'C:\\Users\\MSI\\AppData\\Roaming\\R\\config\\R\\modelsummary', reason 'Permission denied'\r\n9: In dir.create(dn, recursive = TRUE) :\r\n  cannot create dir 'C:\\Users\\MSI\\AppData\\Roaming\\R\\config\\R\\modelsummary', reason 'Permission denied'\r\n10: In dir.create(dn, recursive = TRUE) :\r\n  cannot create dir 'C:\\Users\\MSI\\AppData\\Roaming\\R\\config\\R\\modelsummary', reason 'Permission denied'\r\nWarning message:\r\nThe `label.size` argument of `geom_label()` is deprecated as of ggplot2 3.5.0.\r\ni Please use the `linewidth` argument instead. \r\nChapter 14 reporting benchmark reproduced and exported.\r\n"
+  },
+  {
+    "chapter": 18,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 18 benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 19,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 19 benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 21,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 21 benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 22,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nRegistered S3 method overwritten by 'clubSandwich':\r\n  method    from    \r\n  bread.mlm sandwich\r\nChapter 22 benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 4,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nWarning message:\r\npackage 'plm' was built under R version 4.5.3 \r\nWarning messages:\r\n1: In selectT(l, theTs) : the time series is short\r\n2: In plm::cipstest(pd$linvest, lags = 1L, type = \"drift\", model = \"cmg\") :\r\n  p-value greater than printed p-value\r\nChapter 4 Fisher/ADF and CADF case calculations reproduced; native tests exported.\r\n"
+  },
+  {
+    "chapter": 12,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nWarning message:\r\npackage 'plm' was built under R version 4.5.3 \r\nChapter 12 diagnostic benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 20,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nWarning message:\r\npackage 'plm' was built under R version 4.5.3 \r\nChapter 20 benchmark reproduced. Note: plm::pmg() = MG/DMG/CCEMG, not PSS-PMG.\r\n"
+  },
+  {
+    "chapter": 15,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nThere were 21 warnings (use warnings() to see them)\r\n[1] \"results/chapter15/output_manifest.csv\"\r\nChapter 15 integrated benchmarks reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 16,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nWarning message:\r\npackage 'plm' was built under R version 4.5.3 \r\nnull device \r\n          1 \r\nnull device \r\n          1 \r\nChapter 16 static/dynamic-OLS/IV benchmarks reproduced. Optional pgmm teaching run status recorded.\r\n"
+  },
+  {
+    "chapter": 23,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nWarning message:\r\nIn dir.create(dn, recursive = TRUE) :\r\n  cannot create dir 'C:\\Users\\MSI\\AppData\\Roaming\\R\\config\\R\\marginaleffects', reason 'Permission denied'\r\nboundary (singular) fit: see help('isSingular')\r\nboundary (singular) fit: see help('isSingular')\r\nChapter 23 benchmark reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 24,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nThere were 11 warnings (use warnings() to see them)\r\n[1] \"results/chapter24/output_manifest.csv\"\r\nChapter 24 capstone benchmarks reproduced successfully.\r\n"
+  },
+  {
+    "chapter": 17,
+    "passed": true,
+    "exit_code": 0,
+    "tail": "During startup - Warning messages:\r\n1: Setting LC_COLLATE=C.UTF-8 failed \r\n2: Setting LC_CTYPE=C.UTF-8 failed \r\n3: Setting LC_MONETARY=C.UTF-8 failed \r\n4: Setting LC_TIME=C.UTF-8 failed \r\nChapter 17 benchmark complete. Pedroni/Johansen/aTSA outputs exported for live-R review.\r\n"
+  }
+]

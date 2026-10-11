@@ -1,0 +1,15 @@
+# Chapter 24 - sequential capstone run
+source("R/chapter24_functions.R")
+packages <- c("readr","dplyr","plm","sandwich","modelsummary","digest","ggplot2")
+assert_packages(packages)
+raw_file <- "data/Grunfeld_PanelData_2006_2025.csv"
+hash <- sha256_file(raw_file)
+dat <- transform_panel(read_validate_panel(raw_file))
+models <- estimate_capstone(dat)
+selection <- selection_ledger(models)
+inference <- inference_ledger(models)
+reporting <- build_reporting_table(models,inference)
+stopifnot(abs(finite_change(coef(models$growth_period)["dlvalue"],0.10)-4.838004060655)<1e-5)
+files <- write_outputs(selection,inference,reporting,hash)
+write_manifest(files)
+message("Chapter 24 capstone benchmarks reproduced successfully.")

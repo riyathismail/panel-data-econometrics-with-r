@@ -1,0 +1,2 @@
+if(!requireNamespace("plm",quietly=TRUE)) stop("Install plm")
+dat<-read.csv("data/Grunfeld_PanelData_2006_2025.csv"); dat<-dat[order(dat$firm,dat$year),]; dat$linvest<-log(dat$invest); dat$lvalue<-log(dat$value); dat$lcapital<-log(dat$capital); pd<-plm::pdata.frame(dat,index=c("firm","year")); pool<-plm::plm(linvest~lvalue+lcapital,data=pd,model="pooling"); between<-plm::plm(linvest~lvalue+lcapital,data=pd,model="between"); within<-plm::plm(linvest~lvalue+lcapital,data=pd,model="within"); stopifnot(max(abs(coef(within)-c(lvalue=0.591847,lcapital=0.255918)))<1e-5)

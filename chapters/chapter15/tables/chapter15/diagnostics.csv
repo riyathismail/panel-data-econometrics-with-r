@@ -1,0 +1,7 @@
+"diagnostic","statistic","p.value"
+"Firm groupwise variance LR",17.7952297431327,0.0376249443095818
+"Period groupwise variance LR",39.0854752418587,0.00277528552202246
+"Residual AR(1) slope",-0.0689790101281096,0.470629533544873
+"Pesaran CD (descriptive after period FE)",-3.08684297666413,NA
+"Ramsey RESET F",0.487665613498367,0.614929854402393
+"Jarque-Bera",5.10482851851558,0.0778933839883949

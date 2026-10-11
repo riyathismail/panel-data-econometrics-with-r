@@ -1,0 +1,6 @@
+PDF: /mnt/data/Panel_Data_Econometrics_with_R_RStudio_Chapter23/Chapter_23_R_RStudio_Review.pdf
+Pages: 21
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False

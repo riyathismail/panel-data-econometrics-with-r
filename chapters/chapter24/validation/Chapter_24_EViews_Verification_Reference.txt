@@ -1,0 +1,303 @@
+CHAPTER 24 NUMERICAL, ECONOMETRIC, AND EVIEWS VERIFICATION
+==========================================================
+
+Chapter:
+  Final Capstone and Comprehensive Review
+
+Dataset:
+  Grunfeld_PanelData_2006_2025.csv
+
+Dataset convention
+------------------
+- 10 firms x 20 sequential teaching-period labels = 200 level observations.
+- Original Grunfeld years 1935-1954 are sequentially relabelled 2006-2025.
+- The labels are instructional period identifiers only; no modern event is
+  attached to a relabelled date.
+- invest  = real gross investment.
+- value   = real market value of the firm.
+- capital = real stock of plant and equipment.
+- Raw monetary values are in millions of 1947 dollars.
+- linvest/lvalue/lcapital are natural logs.
+- ginvest/gvalue/gcapital are first log differences.
+- First log differences leave 190 firm-period transitions.
+
+Book-wide evidence reconciliation
+---------------------------------
+The capstone was checked against the revised results in Chapters 1-23 rather
+than copied from the original disguised-variable manuscript.
+
+Stationarity:
+  Logged-level evidence is heterogeneous and specification-sensitive.
+  First log differences show much stronger stationarity evidence.
+  The short-run first-log-difference branch is therefore primary; cointegration
+  remains conditional rather than automatic.
+
+Logged-level model selection:
+  Pooled OLS:
+    ln(value)   = 0.773256744
+    ln(capital) = 0.380533500
+
+  One-way FE:
+    ln(value)   = 0.591847307
+    ln(capital) = 0.255918016
+    redundant firm effects F(9,188) = 52.284645
+    p = 1.56e-46
+
+  One-way RE, Swamy-Arora teaching reconstruction:
+    ln(value)   = 0.662453320
+    ln(capital) = 0.255515458
+    theta       = 0.868933010
+
+  Cross-section Breusch-Pagan random-component LM:
+    LM = 754.636424
+    p < 0.001
+
+  Conventional one-way Hausman:
+    chi-square(2) = 7.715151
+    p = 0.021119
+
+  Period-adjusted Mundlak auxiliary joint test:
+    chi-square(2) = 32.202709
+    p = 1.02e-7
+
+  Two-way FE:
+    ln(value)   = 0.328554135
+    ln(capital) = 0.076795861
+
+Principal short-run model
+-------------------------
+  Delta ln(invest)_it = lambda_t
+                        + betaV Delta ln(value)_it
+                        + betaK Delta ln(capital)_it + u_it
+
+  observations = 190
+  betaV =  0.495709424
+  betaK = -0.085692611
+  R-squared = 0.492530737
+  adjusted R-squared = 0.432475202
+
+Growth effect-structure tests:
+  Period effects after differencing:
+    F(18,169) = 4.844947
+    p = 1.14e-8
+
+  Additional firm effects after differencing, firm-only vs pooled:
+    F(9,178) = 0.194074
+    p = 0.994580
+
+Principal period-clustered reference inference:
+  Delta ln(value):
+    coefficient = 0.495709424
+    SE = 0.07433646
+    t = 6.6684 approximately
+    95% t_18 reference CI = [0.3395343, 0.6518845]
+    reference p = 2.95e-6
+
+  Delta ln(capital):
+    coefficient = -0.085692611
+    SE = 0.04192665
+    t = -2.0440 approximately
+    95% t_18 reference CI = [-0.1737772, 0.0023920]
+    reference p = 0.0558815
+
+Cluster covariance sensitivity:
+  Firm cluster SEs:
+    gvalue = 0.13841451
+    gcapital = 0.04012400
+
+  Period cluster SEs:
+    gvalue = 0.07433646
+    gcapital = 0.04192665
+
+  Two-way cluster SEs:
+    gvalue = 0.12033803
+    gcapital = 0.04122929
+
+  Under all three cluster choices the gvalue interval remains positive.
+  Under all three cluster choices the gcapital 95% teaching reference interval
+  contains zero.
+
+Finite-change interpretation
+----------------------------
+For betaV = 0.495709424:
+
+  5% increase in value:
+    exact fitted investment growth-factor change = 2.4481%
+    period-clustered interval transformation = [1.6704%, 3.2317%]
+
+  10% increase in value:
+    exact fitted investment growth-factor change = 4.8380%
+    interval = [3.2890%, 6.4102%]
+
+  20% increase in value:
+    exact fitted investment growth-factor change = 9.4589%
+    interval = [6.3861%, 12.6204%]
+
+  The 20% linear approximation is 0.495709424*20 = 9.9142%, so the chapter
+  correctly distinguishes the approximation from the finite-change formula.
+
+Diagnostic continuity
+---------------------
+The capstone reconciles with Chapter 12:
+  - period-adjusted growth residual AR(1) slope = -0.068979;
+  - firm-cluster p for H0: slope=0 = 0.470630;
+  - conventional RESET F = 0.487666, p = 0.614930;
+  - residual Pesaran CD = -3.086843, p = 0.002023;
+  - residual variance heterogeneity remains.
+
+Thus covariance correction is motivated after the conditional mean survives
+these checks; it is not used to repair a rejected mean specification.
+
+Advanced-chapter reconciliation
+-------------------------------
+Chapter 16, dynamic/IV:
+  growth lag = -0.005577, period-clustered p about 0.956;
+  Anderson-Hsiao internal-IV estimate = 0.498599, SE = 0.779410;
+  excluded-instrument first-stage F(1,159) = 2.10.
+  Conclusion: no compelling dynamic/internal-IV replacement.
+
+Chapter 17, conditional cointegration/ECM:
+  integration evidence remains qualified;
+  transparent two-way DOLS q=1 slopes:
+    ln(value) = 0.33592
+    ln(capital) = 0.32583
+  conditional ECM adjustment phi about -0.406, half-life about 1.33 teaching periods.
+  Conclusion: useful conditional long-run branch, not automatic main model.
+
+Chapter 18, forecasting:
+  rolling conditional RMSE = 0.175861;
+  zero-growth RMSE = 0.226444;
+  lagged-information ex ante RMSE = 0.204945.
+  Conclusion: forecast estimands are evaluated by information sets and loss.
+
+Chapter 19, panel Granger/PVAR:
+  only investment-growth -> capital-stock-growth predictability remains robust
+  across one- and two-lag DH specifications.
+  Conclusion: predictive reduced-form result, not structural causality.
+
+Chapter 20, heterogeneity/common factors:
+  common-slope interaction test F(18,142) = 1.369426, p = 0.155727;
+  time-demeaned MG means:
+    gvalue = 0.526463
+    gcapital = -0.148821
+  CCEMG means:
+    gvalue = 0.377069
+    gcapital = -0.594943
+  Conclusion: positive gvalue association is more stable than gcapital.
+
+Chapter 21, structural breaks:
+  pre-specified teaching-label-2020 joint slope test p = 0.809191;
+  unknown-date sup-F bootstrap p = 0.3894.
+  Conclusion: no convincing common slope break; no modern-event interpretation.
+
+Chapter 22, DiD:
+  original base data contain no real treatment metadata;
+  all DiD results are explicitly synthetic teaching exercises.
+
+Chapter 23, nonlinear model:
+  derived event is 1[Delta ln(invest)>0];
+  logit AME for gvalue about 1.09472;
+  the binary model changes the estimand and is not a strict robustness estimate
+  of the continuous-growth coefficient.
+
+EViews documentation verification
+---------------------------------
+Current official EViews documentation was checked for:
+
+- wfopen:
+    opens foreign data sources, including CSV, into a new workfile.
+
+- pagestruct:
+    pagestruct firm @date(year) is documented panel-structuring syntax.
+
+- Panel LS:
+    cx=f/r and per=f/r select cross-section and period effects.
+    cov=percluster is period clustering.
+    cov=cxcluster is cross-section/firm clustering.
+    cov=bothcluster is two-way firm-period clustering.
+
+- fixedtest:
+    tests joint significance/redundancy of fixed effects.
+
+- rcomptest:
+    requires a pooled least-squares panel equation and reports random-component
+    LM-type tests.
+
+- ranhaus:
+    must be run from a random-effects equation and compares against the
+    corresponding fixed-effects model; robust-SE Hausman results require caution.
+
+- cdtest:
+    reports Breusch-Pagan LM, Pesaran scaled LM, Pesaran CD, and related panel
+    residual dependence diagnostics.
+
+- freeze(mode=overwrite,...):
+    creates a named frozen output object and overwrites an existing object.
+
+- spool.append(name=..., mode=overwrite):
+    appends named output objects to a spool and can replace existing spool items.
+
+- spool.save:
+    supports PDF and LaTeX export, including A4 PDF output.
+
+- wfsave:
+    saves the default workfile as an EViews workfile.
+
+- EViews program continuation:
+    wrapped program lines use '_' rather than a backslash.
+
+Official EViews pages checked on 2026-08-07:
+  https://eviews.com/help/content/commandcmd-wfopen.html
+  https://help.eviews.com/content/commandcmd-pagestruct.html
+  https://help.eviews.com/content/panel-Estimating_a_Panel_Equation.html
+  https://www.eviews.com/help/content/commandcmd.html
+  https://www.eviews.com/help/content/equationcmd-rcomptest.html
+  https://www.eviews.com/help/content/equationcmd-ranhaus.html
+  https://eviews.com/help/content/commandcmd-freeze.html
+  https://help.eviews.com/content/spoolcmd-append.html
+  https://eviews.com/help/content/spoolcmd.html
+  https://eviews.com/help/content/commandcmd-wfsave.html
+
+Editorial verification
+----------------------
+- Unit terminology changed to Chapter terminology.
+- u24 labels migrated to ch24.
+- unit24 figure paths migrated to chapter24.
+- Capital/CapEx/BookVal disguised variable names removed.
+- PanelData_2025.csv removed.
+- Correct invest/value/capital meanings restored throughout.
+- Final outcome is gross-investment growth, not capital growth.
+- Principal positive regressor is firm-market-value growth, not capital expenditure.
+- gcapital is capital-stock growth, not BookVal growth.
+- Period effects/clustering replace misleading modern-year language.
+- 2006-2025 are identified as teaching-period labels only.
+- Stationarity conclusion made cautious and consistent with Chapter 4.
+- Cointegration, dynamic, forecasting, causal and nonlinear extensions are kept
+  as separate conditional estimands rather than interchangeable robustness models.
+- Duplicate References TOC entries removed.
+- The package now actually contains Chapter_24_EViews_Capstone.prg.
+
+PDF verification
+----------------
+- Final standalone PDF: 17 A4 pages.
+- Compiled twice after the final edits.
+- No LaTeX errors.
+- No undefined references.
+- No overfull or underfull box warnings.
+- All 17 pages rendered at 170 dpi after the final compilation.
+- Full montage visually inspected.
+- Evidence-ledger pages inspected at full-page resolution.
+- EViews program pages inspected at full-page resolution.
+- Formula-reference pages inspected at full-page resolution.
+- Review/reference pages inspected.
+- No clipped text, table overflow, code clipping, figure overlap, broken glyphs,
+  or running-header collision observed.
+- Final source and PDF text scans contain no CapEx, BookVal, PanelData_2025,
+  Unit 24, unit24, u24:, GCapital, GCapEx, GBookVal, or year-clustered wording.
+
+Environment note
+----------------
+EViews is not installed in the execution environment. Current EViews command
+syntax and feature semantics were therefore checked against official EViews
+documentation. All empirical capstone quantities were reconciled with the
+independently verified results from the revised Grunfeld chapters.

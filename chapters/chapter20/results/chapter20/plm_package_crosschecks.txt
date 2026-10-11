@@ -1,0 +1,90 @@
+Mean Groups model
+
+Call:
+plm::pmg(formula = dlinvest ~ dlvalue + dlcapital, data = pdata, 
+    model = "mg")
+
+Balanced Panel: n = 10, T = 19, N = 190
+
+Residuals:
+       Min.     1st Qu.      Median     3rd Qu.        Max. 
+-0.70038281 -0.12215928 -0.01762947  0.15079147  0.61956556 
+
+Coefficients:
+             Estimate Std. Error z-value  Pr(>|z|)    
+(Intercept)  0.105572   0.020572  5.1318 2.869e-07 ***
+dlvalue      0.433118   0.124410  3.4814 0.0004989 ***
+dlcapital   -0.671650   0.342369 -1.9618 0.0497891 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Total Sum of Squares: 13.113
+Residual Sum of Squares: 8.8578
+Multiple R-squared: 0.3245
+Demeaned Mean Groups model
+
+Call:
+plm::pmg(formula = dlinvest ~ dlvalue + dlcapital, data = pdata, 
+    model = "dmg")
+
+Balanced Panel: n = 10, T = 19, N = 190
+
+Residuals:
+        Min.      1st Qu.       Median      3rd Qu.         Max. 
+-0.515844649 -0.102734540 -0.007888393  0.114877342  0.450130691 
+
+Coefficients:
+               Estimate  Std. Error z-value  Pr(>|z|)    
+(Intercept) -0.00075781  0.00892951 -0.0849   0.93237    
+dlvalue      0.52646294  0.13515296  3.8953 9.807e-05 ***
+dlcapital   -0.14882113  0.07242914 -2.0547   0.03991 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Total Sum of Squares: 13.113
+Residual Sum of Squares: 5.652
+Multiple R-squared: 0.56897
+Common Correlated Effects Mean Groups model
+
+Call:
+plm::pmg(formula = dlinvest ~ dlvalue + dlcapital, data = pdata, 
+    model = "cmg")
+
+Balanced Panel: n = 10, T = 19, N = 190
+
+Residuals:
+        Min.      1st Qu.       Median      3rd Qu.         Max. 
+-0.505877488 -0.100222864 -0.001150646  0.104339166  0.387226159 
+
+Coefficients:
+               Estimate Std. Error z-value  Pr(>|z|)    
+(Intercept)    0.023879   0.025460  0.9379  0.348288    
+dlvalue        0.377069   0.144618  2.6073  0.009125 ** 
+dlcapital     -0.594943   0.344037 -1.7293  0.083756 .  
+y.bar          1.063628   0.163467  6.5067 7.682e-11 ***
+dlvalue.bar   -0.571293   0.201152 -2.8401  0.004510 ** 
+dlcapital.bar  0.186079   0.135715  1.3711  0.170342    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Total Sum of Squares: 13.113
+Residual Sum of Squares: 4.1327
+Multiple R-squared: 0.68483
+Common Correlated Effects Pooled model
+
+Call:
+plm::pcce(formula = dlinvest ~ dlvalue + dlcapital, data = pdata, 
+    model = "p")
+
+Balanced Panel: n = 10, T = 19, N = 190
+
+Residuals:
+      Min.    1st Qu.     Median    3rd Qu.       Max. 
+-0.5025960 -0.1020209 -0.0112853  0.1110462  0.6106617 
+
+Coefficients:
+           Estimate Std. Error z-value Pr(>|z|)  
+dlvalue    0.387505   0.188279  2.0581  0.03958 *
+dlcapital -0.088003   0.337149 -0.2610  0.79408  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Total Sum of Squares: 13.113
+Residual Sum of Squares: 5.0136
+HPY R-squared: 0.5309

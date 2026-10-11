@@ -1,0 +1,171 @@
+===== FIRST-GENERATION LEVEL TESTS =====
+--- linvest ---
+
+	Maddala-Wu Unit-Root Test (ex. var.: Individual Intercepts)
+
+data:  pdata$linvest
+chisq = 19.159, df = 20, p-value = 0.5115
+alternative hypothesis: stationarity
+
+--- lvalue ---
+
+	Maddala-Wu Unit-Root Test (ex. var.: Individual Intercepts)
+
+data:  pdata$lvalue
+chisq = 80.761, df = 20, p-value = 2.915e-09
+alternative hypothesis: stationarity
+
+--- lcapital ---
+
+	Maddala-Wu Unit-Root Test (ex. var.: Individual Intercepts)
+
+data:  pdata$lcapital
+chisq = 45.629, df = 20, p-value = 0.000906
+alternative hypothesis: stationarity
+
+===== CIPS LEVEL TESTS =====
+--- linvest ---
+$method
+[1] "Direct cross-section augmented DF(0), intercept, untruncated"
+
+$statistic
+     CIPS 
+-2.335903 
+
+$individual_t
+        1         2         3         4         5         6         7         8 
+-1.381217 -1.588408 -1.870408 -2.596430 -4.235425 -2.830427 -2.866745 -1.730116 
+        9        10 
+-1.944265 -2.315593 
+
+$critical_value_p_report
+[1] 0.05138191
+
+$panel_dimensions
+ N  T 
+10 20 
+
+$critical_T_convention
+[1] "Original observed time dimension; CADF uses T-1 regression rows"
+
+--- lvalue ---
+$method
+[1] "Direct cross-section augmented DF(0), intercept, untruncated"
+
+$statistic
+     CIPS 
+-2.414463 
+
+$individual_t
+         1          2          3          4          5          6          7 
+-2.4530370 -1.5351883 -0.5830147 -2.9630120 -2.3427024  0.3137094 -1.8282894 
+         8          9         10 
+-6.8428717 -3.6230157 -2.2872082 
+
+$critical_value_p_report
+[1] 0.03849246
+
+$panel_dimensions
+ N  T 
+10 20 
+
+$critical_T_convention
+[1] "Original observed time dimension; CADF uses T-1 regression rows"
+
+--- lcapital ---
+$method
+[1] "Direct cross-section augmented DF(0), intercept, untruncated"
+
+$statistic
+     CIPS 
+-3.438476 
+
+$individual_t
+          1           2           3           4           5           6 
+-12.4154794   0.3463106  -3.1057405  -2.3298244  -3.0696779  -5.1775420 
+          7           8           9          10 
+ -5.2800539  -1.3922969  -1.4021013  -0.5583499 
+
+$critical_value_p_report
+[1] "< 0.01"
+
+$panel_dimensions
+ N  T 
+10 20 
+
+$critical_T_convention
+[1] "Original observed time dimension; CADF uses T-1 regression rows"
+
+===== CIPS FIRST-DIFFERENCE TESTS =====
+--- dlinvest ---
+$method
+[1] "Direct cross-section augmented DF(0), intercept, untruncated"
+
+$statistic
+     CIPS 
+-4.508906 
+
+$individual_t
+        1         2         3         4         5         6         7         8 
+-3.160379 -3.453752 -3.650104 -4.936168 -7.032110 -4.900521 -4.971067 -4.807672 
+        9        10 
+-5.097716 -3.079568 
+
+$critical_value_p_report
+[1] "< 0.01"
+
+$panel_dimensions
+ N  T 
+10 19 
+
+$critical_T_convention
+[1] "Original observed time dimension; CADF uses T-1 regression rows"
+
+--- dlvalue ---
+$method
+[1] "Direct cross-section augmented DF(0), intercept, untruncated"
+
+$statistic
+    CIPS 
+-4.50906 
+
+$individual_t
+        1         2         3         4         5         6         7         8 
+-4.544268 -3.278056 -3.535784 -5.275133 -5.438500 -4.269449 -3.719065 -6.661711 
+        9        10 
+-5.344096 -3.024535 
+
+$critical_value_p_report
+[1] "< 0.01"
+
+$panel_dimensions
+ N  T 
+10 19 
+
+$critical_T_convention
+[1] "Original observed time dimension; CADF uses T-1 regression rows"
+
+--- dlcapital ---
+$method
+[1] "Direct cross-section augmented DF(0), intercept, untruncated"
+
+$statistic
+     CIPS 
+-4.789611 
+
+$individual_t
+        1         2         3         4         5         6         7         8 
+-6.805017 -3.242765 -2.830458 -6.272527 -4.270094 -7.047282 -3.331392 -6.092630 
+        9        10 
+-6.938174 -1.065769 
+
+$critical_value_p_report
+[1] "< 0.01"
+
+$panel_dimensions
+ N  T 
+10 19 
+
+$critical_T_convention
+[1] "Original observed time dimension; CADF uses T-1 regression rows"
+

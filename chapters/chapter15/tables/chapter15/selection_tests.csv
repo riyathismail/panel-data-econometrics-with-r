@@ -1,0 +1,9 @@
+"test","statistic","df","p.value"
+"Pooled levels vs firm FE",52.2846454430905,"9,188",1.56468399334379e-46
+"Pooled levels vs RE component",754.636423561309,"1",3.93804137319169e-166
+"FE vs RE Hausman",7.7151512755438,"2",0.0211191379492939
+"Period-adjusted Mundlak means",32.2027093104875,"2",1.01688191144159e-07
+"Growth: firm effects vs pooled",0.194074150526681,"9,178",0.99458006744979
+"Growth: period effects vs pooled",4.84494697492478,"18,169",1.14443967245809e-08
+"Growth: firm effects given period",0.300909453058006,"9,160",0.973590884656655
+"Growth: period effects given firm",4.6818597048494,"18,160",3.14302181145572e-08

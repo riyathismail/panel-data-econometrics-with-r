@@ -1,0 +1,243 @@
+CHAPTER 21 NUMERICAL, ECONOMETRIC, AND EVIEWS VERIFICATION
+==========================================================
+
+Chapter:
+  Structural Breaks, Parameter Stability, and Regime Changes
+
+Dataset:
+  Grunfeld_PanelData_2006_2025.csv
+
+Dataset convention
+------------------
+- 10 firms x 20 sequential teaching-period labels = 200 level observations.
+- Original Grunfeld years 1935-1954 are relabelled 2006-2025 only for teaching.
+- invest  = real gross investment.
+- value   = real market value of the firm.
+- capital = real stock of plant and equipment.
+- Raw monetary variables are in millions of 1947 dollars.
+- First log differences leave 190 firm-period observations over 19 teaching-period positions.
+- Teaching label 2020 corresponds to original Grunfeld year 1949.
+- Teaching label 2012 corresponds to original Grunfeld year 1941.
+- No modern event is inferred from a relabelled teaching-period position.
+
+Baseline short-run equation
+---------------------------
+Delta ln(invest)_it = lambda_t
+                      + beta_V Delta ln(value)_it
+                      + beta_K Delta ln(capital)_it + u_it
+
+Period-adjusted full-sample estimates:
+  beta_V =  0.495709
+  beta_K = -0.085693
+  SE_period(beta_V) = 0.074336
+  SE_period(beta_K) = 0.041927
+  observations = 190
+  residual df = 169
+  SSR = 6.654347014
+  R-squared = 0.492530737
+
+Known teaching-label 2020 slope split
+-------------------------------------
+Specification:
+  Delta ln(invest) on Delta ln(value), Delta ln(capital),
+  post2020 x Delta ln(value), post2020 x Delta ln(capital),
+  and complete teaching-period effects.
+
+Before label 2020:
+  beta_V =  0.520013
+  beta_K = -0.085667
+
+Slope changes from label 2020:
+  delta_V = -0.109893
+  period-cluster SE = 0.170058
+  t_18 reference 95% CI = [-0.467172, 0.247385]
+
+  delta_K = -0.005724
+  period-cluster SE = 0.133743
+  t_18 reference 95% CI = [-0.286708, 0.275259]
+
+From label 2020:
+  beta_V + delta_V =  0.410119
+  beta_K + delta_K = -0.091391
+
+Joint period-clustered Wald test:
+  F(2,18) = 0.214230
+  p       = 0.809191
+
+Classical SSR-only known-split comparison:
+  SSR_R = 6.654347014
+  SSR_U = 6.646180472
+  q = 2
+  unrestricted residual df = 167
+  classical F = 0.102601
+This classical statistic is not the preferred case inference because the panel
+shows heteroskedasticity and contemporaneous cross-firm dependence.
+
+Unknown common-break search
+---------------------------
+Candidate first-post teaching labels:
+  2012-2021
+This enforces at least five teaching periods in each regime.
+
+Joint period-clustered F profile:
+  2012  3.027703
+  2013  1.609665
+  2014  1.130350
+  2015  0.495327
+  2016  0.645496
+  2017  0.632167
+  2018  0.342973
+  2019  0.576903
+  2020  0.214230
+  2021  1.635496
+
+Observed sup F:
+  3.027703 at teaching label 2012 (original 1941)
+  pointwise F(2,18) p = 0.073542
+
+Reproducible period-level wild-cluster bootstrap:
+  Rademacher weights
+  one common weight per teaching period, shared by all 10 firms
+  B = 4,999 replications
+  random seed = 2107
+  each replication repeats the complete 10-label search
+
+Joint search:
+  search-adjusted p = 0.3894
+  bootstrap 95% critical value = 9.083234
+
+Firm-market-value-growth slope-change search:
+  observed maximum F = 5.680097 at teaching label 2012
+  pointwise p = 0.028382
+  search-adjusted bootstrap p = 0.1438
+
+Capital-stock-growth slope-change search:
+  observed maximum F = 1.290706 at teaching label 2016
+  pointwise p = 0.270818
+  search-adjusted bootstrap p = 0.8754
+
+Bootstrap note:
+  The previous manuscript reported 0.3934 / 9.1315 for the joint search without
+  documenting a reproducibility seed. The revised chapter uses the fully
+  reproducible seed-2107 run above. The difference is consistent with Monte
+  Carlo variation and does not change the conclusion.
+
+Seven-teaching-period rolling estimates
+---------------------------------------
+Each window contains 70 firm-period observations and 7 distinct teaching periods.
+
+Window       beta_V      beta_K
+2007-2013    0.565480   -0.069978
+2008-2014    0.452584   -0.132874
+2009-2015    0.385306   -0.167612
+2010-2016    0.434528   -0.062500
+2011-2017    0.354805   -0.192698
+2012-2018    0.350836   -0.178522
+2013-2019    0.402917   -0.196619
+2014-2020    0.482422   -0.228359
+2015-2021    0.677896   -0.238584
+2016-2022    0.603948   -0.256376
+2017-2023    0.433886   -0.263572
+2018-2024    0.507940   -0.040268
+2019-2025    0.416831    0.049820
+
+Ranges:
+  beta_V: 0.350836 to 0.677896; positive in every window.
+  beta_K: -0.263572 to 0.049820.
+Largest beta_V window:
+  teaching labels 2015-2021.
+These rolling values are descriptive, not formal break-date estimates.
+
+Residual-dispersion sensitivity
+-------------------------------
+Stable-equation mean squared residual:
+  labels 2007-2019 = 0.04253295
+  labels 2020-2025 = 0.01875107
+  later/earlier ratio = 0.440860
+
+Welch comparison using the 19 teaching-period mean-squared-residual summaries:
+  t = 2.812640
+  p = 0.011996
+  Welch df = 16.9721
+This is reported only as a generated-residual sensitivity diagnostic, not as a
+definitive volatility-break test.
+
+EViews documentation verification
+---------------------------------
+Current official EViews help was checked for:
+
+1. Equation::wald
+   - Joint coefficient restrictions are separated by commas.
+   - The panel interaction test therefore uses:
+       eq_break2020.wald c(4)=0, c(5)=0
+
+2. Panel least squares
+   - per=f requests period fixed effects.
+   - cov=percluster requests period-clustered covariance.
+
+3. Equation::chow
+   - Chow breakpoint tests are documented for least-squares equations with
+     breakpoint observations specified by dates/observation numbers.
+
+4. Equation::breakls / Equation::breakspec
+   - breakls estimates least-squares equations with Bai-Perron-type breakpoints.
+   - method=glob, select=high, trim=15 is documented syntax.
+   - breakspec displays the resulting breakpoint specification.
+
+5. Equation::rls
+   - Recursive least-squares views are documented only for non-panel OLS
+     equations without ARMA terms.
+
+6. Equation::multibreak
+   - Multiple-breakpoint testing is documented only for non-panel list-specified
+     OLS equations.
+
+Therefore standard single-series Chow/recursive/multiple-break commands are not
+applied blindly to a firm-major stacked panel. Common panel break positions are
+represented explicitly using teaching-period interactions.
+
+Official documentation checked on 2026-08-07:
+  https://eviews.com/help/content/equationcmd-chow.html
+  https://www.eviews.com/help/content/equationcmd-breakls.html
+  https://www.eviews.com/help/content/equationcmd.html
+  https://eviews.com/help/content/equationcmd-rls.html
+  https://eviews.com/help/content/commandcmd-ls.html
+
+Editorial verification
+----------------------
+- Capital / CapEx / BookVal disguised meanings removed.
+- invest / value / capital restored throughout.
+- ginvest / gvalue / gcapital used consistently.
+- Unit terminology changed to Chapter terminology.
+- unit21 figure paths migrated to chapter21.
+- year effects / year clustering changed to teaching-period effects / period clustering.
+- teaching label 2020 is explicitly mapped to original 1949 and never treated as modern 2020.
+- teaching label 2012 is explicitly mapped to original 1941.
+- known split is described as a pedagogical pre-specified teaching-label exercise.
+- unknown-date bootstrap now has documented B and random seed.
+- source duplicate References TOC entry removed.
+- Chapter 22 bridge correctly points to Difference-in-Differences and Panel Causal Inference.
+- EViews line continuation uses `_` rather than a backslash.
+
+PDF verification
+----------------
+- Final standalone PDF: 14 A4 pages.
+- Compiled twice after the final edits.
+- No LaTeX errors.
+- No undefined references.
+- No overfull or underfull box warnings.
+- All 14 pages rendered at 170 dpi after final compilation.
+- Full-page montage visually inspected.
+- Detailed inspection performed on the known-split results page and both long
+  EViews-code pages.
+- Initial running-header collision was detected and corrected by placing the
+  shortened mark `Ch. 21: Structural Breaks` after the chapter declaration.
+- Final render contains no clipping, figure overlap, table overflow, code
+  clipping, or running-header collision.
+
+Environment note
+----------------
+EViews is not installed in the execution environment. EViews command syntax and
+feature semantics were checked against current official EViews documentation.
+All reported case statistics were independently reconstructed from the revised
+Grunfeld teaching CSV.

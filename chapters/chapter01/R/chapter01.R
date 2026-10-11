@@ -1,0 +1,5 @@
+dat <- read.csv("data/Grunfeld_PanelData_2006_2025.csv")
+stopifnot(nrow(dat)==200, length(unique(dat$firm))==10, length(unique(dat$year))==20, !anyDuplicated(dat[c("firm","year")]))
+m <- lm(invest ~ value + capital, data=dat)
+stopifnot(max(abs(coef(m)-c(-42.714369,0.115562,0.230678))) < 1e-5)
+dir.create("results/chapter01",recursive=TRUE,showWarnings=FALSE); write.csv(cbind(dat,fitted=fitted(m),residual=residuals(m)),"results/chapter01/fitted_residuals.csv",row.names=FALSE); writeLines(capture.output(sessionInfo()),"results/chapter01/sessionInfo.txt")

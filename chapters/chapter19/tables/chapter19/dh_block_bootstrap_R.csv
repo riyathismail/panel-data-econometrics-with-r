@@ -1,0 +1,7 @@
+predictor,predicted,exceedances,p_block2
+ginvest,gvalue,351,0.3516483516483517
+ginvest,gcapital,0,9.99000999000999e-4
+gvalue,ginvest,729,0.7292707292707292
+gvalue,gcapital,10,0.01098901098901099
+gcapital,ginvest,16,0.016983016983016984
+gcapital,gvalue,82,0.08291708291708291

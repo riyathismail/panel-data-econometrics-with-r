@@ -1,0 +1,265 @@
+CHAPTER 19 NUMERICAL, ECONOMETRIC, AND EVIEWS VERIFICATION
+==========================================================
+
+Chapter:
+  Panel Granger Causality and Panel Vector Autoregression
+
+Dataset:
+  Grunfeld_PanelData_2006_2025.csv
+
+Dataset convention
+------------------
+- 10 firms x 20 sequential teaching-period labels = 200 level observations.
+- Original Grunfeld years 1935-1954 are sequentially relabelled 2006-2025.
+- The relabelled values are instructional identifiers only, not modern calendar observations.
+- invest  = real gross investment.
+- value   = real market value of the firm.
+- capital = real stock of plant and equipment.
+- Raw monetary variables are measured in millions of 1947 dollars.
+- ginvest, gvalue, and gcapital are first log differences and are dimensionless growth measures.
+
+Transformation/sample accounting
+--------------------------------
+Level observations: 200
+First-log-difference observations: 190
+Usable PVAR(1) observations after one additional lag: 180
+Usable PVAR teaching periods: 18 (labels 2008-2025; original periods 1937-1954)
+
+Stationarity/cointegration qualification
+----------------------------------------
+Chapter 4 found heterogeneous/specification-sensitive evidence in logged levels and much
+stronger stationarity evidence in first log differences. Chapter 17 treated cointegration as
+a conditional robustness branch rather than an established mandatory long-run relation.
+Chapter 19 therefore uses ginvest, gvalue, and gcapital for its principal predictive analysis.
+
+Dumitrescu-Hurlin finite-T replication
+--------------------------------------
+For each ordered pair, firm-specific regressions include a constant, K lags of the dependent
+variable, and K lags of the proposed predictor. The individual Wald statistics are averaged.
+The finite-T corrected statistic is calculated with N=10 and T=19.
+
+K=1:
+Predictor                 Predicted                Wbar        Ztilde      two-sided p
+investment growth         firm-value growth        1.255973    0.175433    0.860740
+investment growth         capital-stock growth    25.152729   41.224979   <1e-15
+firm-value growth         investment growth        0.715882   -0.752330    0.451853
+firm-value growth         capital-stock growth     3.911196    4.736541    0.000002174
+capital-stock growth      investment growth        3.092745    3.330616    0.000866540
+capital-stock growth      firm-value growth        2.142691    1.698625    0.089390
+
+K=2 sensitivity:
+Predictor                 Predicted                Wbar        Ztilde      two-sided p
+investment growth         firm-value growth        2.927552    0.567555    0.570337
+investment growth         capital-stock growth    21.186983   20.211576   7.74e-91
+firm-value growth         investment growth        1.645282   -0.811948    0.416822
+firm-value growth         capital-stock growth     2.581510    0.195274    0.845179
+capital-stock growth      investment growth        3.278459    0.945071    0.344622
+capital-stock growth      firm-value growth        4.264888    2.006300    0.044824
+
+Robust lag conclusion:
+  Only investment-growth -> capital-stock-growth remains strongly significant for both K=1
+  and K=2. All other directions are absent, borderline, or lag-sensitive.
+
+Synchronous circular-block residual-bootstrap sensitivity
+---------------------------------------------------------
+Independent replication used the K=1 restricted firm-specific autoregression under each null,
+resampled aligned residual rows synchronously across all 10 firms in circular time blocks of
+length 2, generated the dependent variable recursively, held the proposed predictor path fixed,
+and recomputed the DH statistic. B=1000 and reproducibility seed=1907. Adjusted upper-tail
+probability = (1 + exceedances)/(B + 1).
+
+Predictor                 Predicted                block-2 bootstrap p
+investment growth         firm-value growth        0.351648
+investment growth         capital-stock growth     0.000999
+firm-value growth         investment growth        0.729271
+firm-value growth         capital-stock growth     0.010989
+capital-stock growth      investment growth        0.016983
+capital-stock growth      firm-value growth        0.082917
+
+These bootstrap values are independently programmed sensitivities; EViews Group::cause does not
+produce this bootstrap automatically.
+
+Common-sample lag-order comparison
+----------------------------------
+All p=1,2,3 systems were compared on the same 160-observation sample (teaching labels 2010-2025).
+The criteria below are averages across the three equation-specific fixed-effects regressions.
+
+Lag p     AIC          BIC          HQ
+1        -0.896245    -0.358090    -0.677719
+2        -0.910102    -0.314287    -0.668162
+3        -0.918685    -0.265211    -0.653332
+
+AIC chooses p=3; BIC and HQ choose p=1. With N=10, short T, and dynamic-FE bias, Chapter 19
+uses p=1 as the parsimonious descriptive system.
+
+Homogeneous two-way fixed-effects PVAR(1)
+-----------------------------------------
+Variable order: [ginvest, gvalue, gcapital].
+Rows are equations; columns are lagged predictors in the same order.
+
+A1 =
+[[-0.043297119  -0.055458818  -0.131212118]
+ [ 0.137447534  -0.220983928  -0.087350122]
+ [ 0.327179914   0.379884371   0.133995235]]
+
+Period-clustered standard errors and cluster-reference probabilities (18 period clusters):
+
+Investment-growth equation:
+  L1 investment growth: coefficient -0.043297, SE 0.086660, p 0.623745
+  L1 firm-value growth: coefficient -0.055459, SE 0.154390, p 0.723859
+  L1 capital-stock growth: coefficient -0.131212, SE 0.031629, p 0.000672
+
+Firm-value-growth equation:
+  L1 investment growth: coefficient 0.137448, SE 0.055129, p 0.023270
+  L1 firm-value growth: coefficient -0.220984, SE 0.114786, p 0.071104
+  L1 capital-stock growth: coefficient -0.087350, SE 0.033387, p 0.018061
+
+Capital-stock-growth equation:
+  L1 investment growth: coefficient 0.327180, SE 0.093056, p 0.002651
+  L1 firm-value growth: coefficient 0.379884, SE 0.252760, p 0.151201
+  L1 capital-stock growth: coefficient 0.133995, SE 0.087239, p 0.142950
+
+The coefficient 0.327180 means that, conditional on firm effects, period effects, and the other
+lagged growth variables, a 0.10 increase in previous-period investment log growth is associated
+with approximately 0.0327 (3.27 percentage points) higher current capital-stock log growth.
+This is a predictive association, not an intervention effect.
+
+Dynamic stability
+-----------------
+Eigenvalues of A1:
+  0.032919 + 0.264045 i
+  0.032919 - 0.264045 i
+ -0.196124
+
+Moduli:
+  0.266089, 0.266089, 0.196124
+
+All are inside the unit circle, so the fitted reduced-form PVAR(1) is dynamically stable.
+Stability does not validate the estimator or identify structural shocks.
+
+Reduced-form residual covariance
+--------------------------------
+Using the common PVAR(1) sample, the residual covariance matrix (1/n scaling for the reduced-form
+innovation calculations) is approximately:
+
+[[ 0.03646142   0.00670034  -0.00428890]
+ [ 0.00670034   0.01438887   0.00113767]
+ [-0.00428890   0.00113767   0.02795922]]
+
+Sample residual standard deviations:
+  investment growth    0.191481
+  firm-value growth    0.120288
+  capital-stock growth 0.167677
+
+Residual correlation between investment-growth and firm-value-growth innovations:
+  0.292527
+
+Generalized impulse-response replication
+----------------------------------------
+Generalized response of investment growth at horizon 0 and 1:
+
+Shock / innovation             h=0          h=1
+investment growth             0.190949     -0.007266
+firm-value growth             0.055858     -0.010315
+capital-stock growth         -0.025650     -0.021207
+
+Responses decay rapidly under the stable A1 matrix. These are generalized reduced-form responses,
+not orthogonal structural causal effects.
+
+Normalized generalized FEVD, horizon 5
+--------------------------------------
+Rows are forecasted variables; columns are innovations [investment, firm value, capital stock].
+
+investment growth:     89.3036%   7.9892%   2.7073%
+firm-value growth:     10.5302%  86.9241%   2.5456%
+capital-stock growth:  15.6402%  11.2044%  73.1554%
+
+Generalized shares are normalized across innovations within each outcome because raw generalized
+FEVD contributions need not sum to one when innovations are correlated.
+
+Residual diagnostics
+--------------------
+Average within-firm lag-1 residual correlation:
+  investment-growth equation   -0.020445
+  firm-value-growth equation   -0.102428
+  capital-stock-growth equation 0.192187
+
+Residual cross-section dependence after period effects:
+  Equation               mean pair corr   mean |corr|   Pesaran-type CD   p
+  investment growth       -0.107949        0.223501     -3.072277        0.002124
+  firm-value growth       -0.106865        0.251236     -3.041428        0.002355
+  capital-stock growth    -0.074681        0.387811     -2.125445        0.033549
+
+Complete period effects impose a within-period residual adding-up restriction, so negative average
+pairwise residual correlations should not be interpreted as negative economic spillovers.
+
+Current EViews documentation verification
+-----------------------------------------
+Current official EViews documentation was checked for:
+
+1. Group::cause
+   - Syntax: group_name.cause(n, options)
+   - `dh` requests the Dumitrescu-Hurlin panel test.
+   - `p` prints output.
+   - Example in current help: macro.cause(12, p, dh).
+
+2. Panel causality testing
+   - EViews distinguishes stacked homogeneous panel Granger tests from the heterogeneous
+     Dumitrescu-Hurlin procedure.
+   - The DH test is based on cross-section-specific bivariate regressions and averaged statistics.
+
+3. Panel equation LS
+   - `cx=f` specifies cross-section fixed effects.
+   - `per=f` specifies period fixed effects.
+   - `cov=percluster` specifies period clustering.
+
+4. Structural panel VAR tooling
+   - EViews currently lists a separately installed `PSVAR` add-in for a Pedroni panel structural
+     VAR implementation.
+   - This add-in is not the same estimator as the descriptive equation-by-equation two-way FE
+     PVAR used in Chapter 19.
+   - Ordinary time-series VAR/SVAR views apply to correctly constructed time-series VAR objects,
+     not to a blindly stacked panel whose lags can cross firm boundaries.
+
+Official EViews sources checked on 2026-08-07:
+  https://www.eviews.com/help/content/groupcmd-cause.html
+  https://eviews.com/help/content/panelstats-Panel_Causality_Testing.html
+  https://eviews.com/help/content/commandcmd-ls.html
+  https://www.eviews.com/Addins/addins.shtml
+  https://blog.eviews.com/2018/12/panel-structural-vars-and-psvar-add-in.html
+
+Editorial verification
+----------------------
+- Disguised Capital / CapEx / BookVal meanings removed.
+- Restored invest / value / capital meanings throughout.
+- `ginvest`, `gvalue`, and `gcapital` used consistently in EViews code.
+- Unit terminology changed to Chapter terminology.
+- `unit19` figure paths migrated to `chapter19`.
+- `year effects` / `year clustering` changed to period effects / period clustering where `year`
+  is only the teaching-period identifier.
+- Teaching labels 2006-2025 are explicitly separated from modern calendar years and events.
+- The robust DH conclusion is correctly stated as investment growth -> capital-stock growth.
+- Lagged firm-value growth does not predict investment growth in the pairwise DH results.
+- Dynamic FE bias and small N/T limitations are retained explicitly.
+- Generalized IRFs and FEVDs are described as reduced-form, not structurally causal.
+- Chapter 20 bridge points to slope heterogeneity, mean-group, and common-factor models.
+
+PDF verification
+----------------
+- Final standalone PDF: 16 A4 pages.
+- Compiled after final econometric and editorial edits.
+- No LaTeX errors.
+- No undefined references.
+- No overfull or underfull box warnings in the final build.
+- All 16 pages rendered at 180 dpi after final compilation.
+- Full-page montage visually inspected.
+- No clipped text, table overflow, code clipping, figure overlap, broken glyphs, or header collision.
+- Final source and extracted PDF text contain no CapEx, BookVal, PanelData_2025, Unit 19,
+  Unit 20, unit19, gcapex, gbookval, lcapex, or lbookval strings.
+
+Environment note
+----------------
+EViews itself is not installed in the execution environment. EViews syntax and feature semantics
+were checked against current official EViews documentation. The empirical DH, PVAR, stability,
+GIRF, FEVD, and residual-diagnostic quantities were independently reconstructed from the revised
+Grunfeld teaching CSV.

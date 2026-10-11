@@ -1,0 +1,37 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
++ raw_file dispatched
+v raw_file completed [110ms, 5.01 kB]
++ raw_data dispatched
+v raw_data completed [110ms, 2.42 kB]
++ data_hash dispatched
+v data_hash completed [0ms, 107 B]
++ panel_data dispatched
+v panel_data completed [16ms, 15.97 kB]
++ models dispatched
+v models completed [32ms, 457.87 kB]
++ selection dispatched
+v selection completed [16ms, 382 B]
++ inference dispatched
+v inference completed [79ms, 576 B]
++ reporting dispatched
+v reporting completed [0ms, 318 B]
++ output_files dispatched
+v output_files completed [125ms, 4.68 kB]
++ output_manifest dispatched
+v output_manifest completed [0ms, 682 B]
+v ended pipeline [1.9s, 10 completed, 0 skipped]
+There were 18 warnings (use warnings() to see them)
+
+Attaching package: 'testthat'
+
+The following objects are masked from 'package:readr':
+
+    edition_get, local_edition
+
+capstone-benchmarks: .......
+
+== DONE ========================================================================

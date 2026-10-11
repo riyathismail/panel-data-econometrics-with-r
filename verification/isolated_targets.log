@@ -1,0 +1,88 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
++ ledger dispatched
+v ledger completed [30ms, 886 B]
++ raw_file dispatched
+v raw_file completed [0ms, 5.01 kB]
++ session_file dispatched
+v session_file completed [20ms, 1.76 kB]
++ raw_data dispatched
+v raw_data completed [90ms, 2.42 kB]
++ data_hash dispatched
+v data_hash completed [0ms, 107 B]
++ panel_data dispatched
+v panel_data completed [20ms, 15.97 kB]
++ hash_file dispatched
+v hash_file completed [0ms, 66 B]
++ figure_files dispatched
+v figure_files completed [470ms, 21.55 kB]
++ models dispatched
+v models completed [30ms, 568.31 kB]
++ stationarity dispatched
+v stationarity completed [60ms, 3.21 kB]
++ selection dispatched
+v selection completed [40ms, 484 B]
++ diagnostics dispatched
+v diagnostics completed [30ms, 384 B]
++ inference dispatched
+v inference completed [20ms, 576 B]
++ stationarity_file dispatched
+v stationarity_file completed [10ms, 3.96 kB]
++ final_table dispatched
+v final_table completed [10ms, 397 B]
++ table_files dispatched
+v table_files completed [90ms, 6.96 kB]
++ output_manifest dispatched
+v output_manifest completed [0ms, 1.55 kB]
+v ended pipeline [1.7s, 17 completed, 0 skipped]
+ISOLATED TARGETS PASS: 15
++ raw_file dispatched
+v raw_file completed [0ms, 5.01 kB]
++ raw_data dispatched
+v raw_data completed [20ms, 2.42 kB]
++ data_hash dispatched
+v data_hash completed [0ms, 107 B]
++ panel_data dispatched
+v panel_data completed [20ms, 15.97 kB]
++ models dispatched
+v models completed [30ms, 457.87 kB]
++ selection dispatched
+v selection completed [10ms, 382 B]
++ inference dispatched
+v inference completed [20ms, 576 B]
++ reporting dispatched
+v reporting completed [0ms, 318 B]
++ output_files dispatched
+v output_files completed [40ms, 4.42 kB]
++ output_manifest dispatched
+v output_manifest completed [0ms, 682 B]
+v ended pipeline [441ms, 10 completed, 0 skipped]
+ISOLATED TARGETS PASS: 24
+Warning messages:
+1: package 'targets' was built under R version 4.5.3 
+2: package 'plm' was built under R version 4.5.3 
+3: package 'lmtest' was built under R version 4.5.3 
+4: package 'sandwich' was built under R version 4.5.3 
+5: package 'ggplot2' was built under R version 4.5.3 
+6: package 'modelsummary' was built under R version 4.5.3 
+7: To compile a LaTeX document with this table, the following commands must be placed in the document preamble:
+
+\usepackage{tabularray}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{codehigh}
+\usepackage[normalem]{ulem}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{siunitx}
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+
+To disable `siunitx` and prevent `modelsummary` from wrapping numeric entries in `\num{}`, call:
+
+options("modelsummary_format_numeric_latex" = "plain")
+ This warning appears once per session. 
+8: 2 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 

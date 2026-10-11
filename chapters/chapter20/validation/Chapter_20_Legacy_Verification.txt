@@ -1,0 +1,293 @@
+CHAPTER 20 NUMERICAL, ECONOMETRIC, AND EVIEWS VERIFICATION
+==========================================================
+
+Chapter:
+  Slope Heterogeneity, Mean Group, and Common-Factor Models
+
+Dataset:
+  Grunfeld_PanelData_2006_2025.csv
+
+Dataset convention
+------------------
+- 10 firms x 20 sequential teaching-period labels = 200 level observations.
+- Original Grunfeld years 1935-1954 are sequentially relabelled 2006-2025.
+- The relabelled values are instructional period identifiers only.
+- invest  = real gross investment.
+- value   = real market value of the firm.
+- capital = real stock of plant and equipment.
+- Raw monetary variables are in millions of 1947 dollars.
+- ginvest, gvalue and gcapital are first log differences and are dimensionless.
+- First differencing leaves 190 usable observations (19 per firm).
+
+A. Common-slope diagnostic benchmark
+------------------------------------
+Specification:
+  ginvest_it = alpha_i + lambda_t
+               + beta_V*gvalue_it + beta_K*gcapital_it + u_it
+
+Two-way FE coefficients:
+  beta_V =  0.484746682
+  beta_K = -0.105150291
+  R-squared = 0.500977273
+  SSR = 6.543589197
+  residual df = 160
+
+Period-clustered standard errors:
+  SE(beta_V) = 0.078589838
+  SE(beta_K) = 0.043752066
+
+Continuity note:
+Chapter 15 selected the period-effects-only first-difference model as the principal
+short-run specification because separate firm growth intercepts were redundant.
+The two-way intercept structure is retained here only for the slope-homogeneity
+sensitivity exercise so that intercept differences are not confounded with slope
+differences. The Chapter 15 principal slopes were 0.495709 and -0.085693.
+
+B. Classical joint interaction test
+-----------------------------------
+Unrestricted model:
+  firm and period effects + common gvalue/gcapital + 18 firm-slope interactions.
+
+Restricted R-squared   = 0.500977273
+Unrestricted R-squared = 0.574789276
+Restricted SSR         = 6.543589197
+Unrestricted SSR       = 5.575706582
+Unrestricted residual df = 142
+
+Classical nested test:
+  F(18,142) = 1.369426153
+  p         = 0.155726828
+
+Interpretation:
+The classical test does not reject common slopes at conventional levels, but this
+is not proof of exact equality. It is exact only under the classical independent
+homoskedastic normal linear-model assumptions. A 18-restriction cluster-robust
+Wald test with only 19 teaching-period clusters is nearly rank-saturated.
+
+C. Mean Group and CCE sensitivity
+---------------------------------
+All MG standard errors below equal the cross-sectional standard deviation of the
+ten firm-specific slope estimates divided by sqrt(10). Teaching t references use
+9 degrees of freedom.
+
+Raw MG:
+  gvalue mean =  0.43311817
+  SE          =  0.12441030
+  t(9)        =  3.48136906
+  p           =  0.00692361
+  range       = [-0.25434252, 1.11544433]
+
+  gcapital mean = -0.67164951
+  SE            =  0.34236888
+  t(9)          = -1.96177150
+  p             =  0.08141225
+  range         = [-3.22125340, 0.24004159]
+
+Time-demeaned MG:
+  gvalue mean =  0.52646294
+  SE          =  0.13515296
+  t(9)        =  3.89531191
+  p           =  0.00364534
+  range       = [-0.59091736, 1.03313095]
+  positive firm slopes = 9/10
+
+  gcapital mean = -0.14882113
+  SE            =  0.07242914
+  t(9)          = -2.05471335
+  p             =  0.07007725
+  range         = [-0.47513794, 0.27613582]
+  negative firm slopes = 8/10
+
+Leave-one-firm-out time-demeaned MG mean ranges:
+  gvalue:   [0.47016650, 0.65061631]
+  gcapital: [-0.19603857, -0.11256371]
+
+CCEMG:
+  gvalue mean =  0.37706937, SE = 0.14461844, p(t9) = 0.02839438
+  gcapital mean = -0.59494311, SE = 0.34403724, p(t9) = 0.11781468
+
+Leave-one-out CCEMG:
+  gvalue mean =  0.35916313, SE = 0.12964327, p(t9) = 0.02173944
+  gcapital mean = -0.68143186, SE = 0.37423404, p(t9) = 0.10196230
+
+Interpretive conclusion:
+The average gvalue slope remains positive across the common-slope, MG and CCE
+sensitivities. The average gcapital slope is negative in all aggregate estimates
+but materially more estimator-sensitive and less precisely measured.
+
+D. Firm-specific ARDL(1,1,1) Mean Group sensitivity
+----------------------------------------------------
+Firm equation (19 usable observations each):
+  Delta linvest_it = mu_i + phi_i*linvest_i,t-1
+                     + pi_Vi*lvalue_i,t-1 + pi_Ki*lcapital_i,t-1
+                     + delta_Vi*gvalue_it + delta_Ki*gcapital_it + e_it
+
+Long-run ratios:
+  theta_Vi = -pi_Vi/phi_i
+  theta_Ki = -pi_Ki/phi_i
+
+Adjustment coefficients:
+  all 10 MG phi_i estimates are negative
+  5/10 are individually significant at 5%
+  mean phi   = -0.708937893
+  median phi = -0.506352521
+
+Long-run firm-market-value ratios:
+  mean   = 1.962358971
+  median = 1.067453542
+  range  = [0.401793729, 6.314478224]
+
+Long-run capital-stock ratios:
+  mean   = 0.038200865
+  median = 0.313173264
+  range  = [-2.712283799, 0.632279347]
+
+Firm 2 has phi = -0.0515313, which makes the corresponding long-run ratio highly
+unstable.
+
+E. Transparent PMG restriction replication
+------------------------------------------
+Method:
+For each candidate common long-run vector (theta_V, theta_K), concentrate out a
+firm-specific intercept, adjustment coefficient and current gvalue/gcapital
+coefficients, then minimize the total SSR. A full nonlinear least-squares Jacobian
+is used only to provide the teaching homoskedastic covariance reported below.
+
+Point estimates:
+  theta_V^PMG = 0.65290813
+  theta_K^PMG = 0.19611245
+
+Conventional homoskedastic NLS teaching standard errors:
+  SE(theta_V) = 0.12274353
+  SE(theta_K) = 0.07672489
+
+Total PMG SSR = 6.522618428
+
+Firm-specific PMG adjustment coefficients:
+  Firm 1   0.04813482
+  Firm 2  -0.24720055
+  Firm 3  -0.25470072
+  Firm 4  -0.07455466
+  Firm 5  -1.99558717
+  Firm 6  -0.34411496
+  Firm 7  -0.81492012
+  Firm 8  -0.60849332
+  Firm 9  -0.31736393
+  Firm 10 -0.59177733
+
+Negative adjustments = 9/10
+Mean adjustment = -0.520057794
+
+These NLS standard errors are from the independent teaching replication and are
+not represented as EViews' analytical PMG covariance estimator.
+
+F. Dynamic fixed-effects sensitivity
+------------------------------------
+Common ECM coefficients with firm intercepts:
+  phi^DFE     = -0.284928883
+  theta_V^DFE =  0.871070689
+  theta_K^DFE =  0.194448438
+  current gvalue coefficient   = 0.631314332
+  current gcapital coefficient = 0.001873508
+  SSR = 8.841932634
+
+G. Descriptive nested-SSR restriction comparisons
+-------------------------------------------------
+Unrestricted MG total SSR = 5.506903687
+Denominator df = 130 (13 residual df x 10 firms)
+
+PMG long-run-pooling restrictions only:
+  F(18,130) = 1.332094766
+  p         = 0.178435141
+
+Broader DFE restrictions:
+  F(45,130) = 1.749536331
+  p         = 0.007895063
+
+These are descriptive classical SSR comparisons under strong independence and
+homoskedasticity assumptions. They are not substitutes for EViews' PMG Hausman
+similarity diagnostics.
+
+H. Current EViews documentation verification
+--------------------------------------------
+Official current EViews documentation was checked for:
+
+1. @demeanby
+   - Returns deviations from group means.
+   - Documented as panel aware.
+
+2. @meansby and @sumsby
+   - Return group means and group sums as linked series.
+   - Used to form teaching-period CCE averages and leave-one-out averages.
+
+3. Equation::testadd
+   - Tests jointly whether listed omitted regressors should be added.
+   - For linear LS, the classical F statistic is based on restricted/unrestricted SSR.
+
+4. Panel LS syntax
+   - cx=f requests cross-section fixed effects.
+   - per=f requests period fixed effects.
+   - cov=percluster requests period clustering.
+
+5. Panel ARDL/PMG
+   - equation.ardl(fixed,deplags=1,reglags=1) is documented panel ARDL syntax.
+   - In this command, fixed means fixed lag lengths, not dynamic fixed effects.
+   - PMG permits heterogeneous short-run coefficients/intercepts while pooling the
+     long-run slope vector.
+
+6. PMG diagnostics and data members
+   - eq.srcoefs displays cross-section error-correction regressions.
+   - eq.similarity and eq.pmghausmantest provide PMG Hausman similarity diagnostics.
+   - @pmglrcoefs returns the pooled long-run vector.
+   - @ardlsrcoefs / @ardlsrses return cross-section short-run coefficients / SEs.
+   - @pmgcxcoefs / @pmgcxses are also documented cross-section EC coefficient matrices.
+
+Official EViews documentation checked on 2026-08-07:
+  https://www.eviews.com/help/content/functionref_d-%40demeanby.html
+  https://www.eviews.com/help/content/functionref_m-%40meansby.html
+  https://www.eviews.com/help/content/functionref_s.html
+  https://www.eviews.com/help/content/equationcmd.html
+  https://www.eviews.com/help/content/testing-Coefficient_Diagnostics.html
+  https://eviews.com/help/content/panel-Estimating_a_Panel_Equation.html
+  https://www.eviews.com/help/content/commandcmd-ardl.html
+  https://www.eviews.com/help/content/panel-Panel_Equation_Testing.html
+  https://help.eviews.com/content/equationcmd-pmghausmantest.html
+
+I. Editorial verification
+-------------------------
+- Original invest/value/capital meanings restored throughout.
+- ginvest/gvalue/gcapital used consistently for first log differences.
+- Capital/CapEx/BookVal teaching aliases removed.
+- Unit terminology changed to Chapter terminology.
+- unit20 figure paths migrated to chapter20.
+- Teaching-period wording replaces modern-year interpretations.
+- Firm-market-value growth, capital-stock growth and gross-investment growth are
+  distinguished consistently.
+- The Chapter 15 principal short-run model is not silently replaced by the two-way
+  diagnostic benchmark used for slope-homogeneity testing.
+- Chapter 17's qualified long-run/cointegration evidence is carried into the PMG caveat.
+- Duplicate References table-of-contents entry removed.
+- Chapter 21 bridge correctly points to Structural Breaks, Parameter Stability,
+  and Regime Changes.
+
+J. PDF verification
+-------------------
+- Final standalone PDF: 15 A4 pages.
+- Compiled twice after final edits.
+- No LaTeX errors.
+- No undefined references.
+- No overfull or underfull box warnings.
+- All 15 pages rendered at 180 dpi after final compilation.
+- Full montage visually reviewed.
+- Long EViews code pages inspected at full-page resolution.
+- Initial running-header collision was found and corrected by moving a shortened
+  mark after the chapter declaration: "Chapter 20: Heterogeneity".
+- Final render contains no clipping, figure overlap, table overflow, code clipping,
+  broken glyphs, or running-header collision.
+
+Environment note
+----------------
+EViews is not installed in the execution environment. EViews command syntax and
+feature semantics were checked against current official EViews documentation.
+All reported empirical case quantities were independently reconstructed from the
+revised Grunfeld teaching CSV.

@@ -1,0 +1,51 @@
+Oneway (individual) effect Random Effect Model 
+   (Swamy-Arora's transformation)
+
+Call:
+plm::plm(formula = linvest ~ lvalue + lcapital + factor(year), 
+    data = pdata, effect = "individual", model = "random", random.method = "swar")
+
+Balanced Panel: n = 10, T = 20, N = 200
+
+Effects:
+                  var std.dev share
+idiosyncratic 0.05254 0.22922 0.173
+individual    0.25130 0.50130 0.827
+theta: 0.8983
+
+Residuals:
+     Min.   1st Qu.    Median   3rd Qu.      Max. 
+-0.921510 -0.127858  0.018032  0.136061  0.699847 
+
+Coefficients:
+                   Estimate Std. Error z-value  Pr(>|z|)    
+(Intercept)       0.2472147  0.4797887  0.5153 0.6063731    
+lvalue            0.5001946  0.0772841  6.4722 9.661e-11 ***
+lcapital          0.0999207  0.0353858  2.8238 0.0047465 ** 
+factor(year)2007  0.0232694  0.1118860  0.2080 0.8352494    
+factor(year)2008  0.0963469  0.1180692  0.8160 0.4144883    
+factor(year)2009 -0.0665741  0.1175758 -0.5662 0.5712426    
+factor(year)2010 -0.2046409  0.1206955 -1.6955 0.0899781 .  
+factor(year)2011  0.0043618  0.1213580  0.0359 0.9713289    
+factor(year)2012  0.2937957  0.1222093  2.4040 0.0162151 *  
+factor(year)2013  0.1888987  0.1240157  1.5232 0.1277128    
+factor(year)2014  0.0309418  0.1251435  0.2473 0.8047142    
+factor(year)2015  0.1303716  0.1250908  1.0422 0.2973116    
+factor(year)2016  0.1541624  0.1261435  1.2221 0.2216626    
+factor(year)2017  0.3345848  0.1278512  2.6170 0.0088710 ** 
+factor(year)2018  0.4118625  0.1304247  3.1579 0.0015893 ** 
+factor(year)2019  0.4765444  0.1332122  3.5773 0.0003471 ***
+factor(year)2020  0.3043688  0.1358935  2.2398 0.0251065 *  
+factor(year)2021  0.2841026  0.1374718  2.0666 0.0387695 *  
+factor(year)2022  0.5259371  0.1404751  3.7440 0.0001811 ***
+factor(year)2023  0.6077574  0.1439150  4.2230 2.410e-05 ***
+factor(year)2024  0.6728239  0.1486462  4.5263 6.001e-06 ***
+factor(year)2025  0.5919942  0.1506642  3.9292 8.522e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Total Sum of Squares:    41.565
+Residual Sum of Squares: 10.44
+R-Squared:      0.74882
+Adj. R-Squared: 0.71919
+Chisq: 530.659 on 21 DF, p-value: < 2.22e-16

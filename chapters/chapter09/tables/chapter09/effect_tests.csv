@@ -1,0 +1,6 @@
+"test","df1","df2","statistic","p.value"
+"Firm effects vs pooled",9,188,52.2846454430905,1.56468399334379e-46
+"Period effects vs pooled",19,178,0.867485856430222,0.623478023084343
+"Period effects | firm effects",19,169,7.53504028837232,1.44105463617387e-14
+"Firm effects | period effects",9,169,92.4265092615914,1.46672967930997e-60
+"Joint firm + period effects",28,169,33.0183227997654,1.73634726675672e-54

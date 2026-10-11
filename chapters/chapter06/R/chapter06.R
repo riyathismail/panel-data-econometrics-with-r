@@ -1,0 +1,3 @@
+if(!requireNamespace("plm",quietly=TRUE)) stop("Install plm")
+dat<-read.csv("data/Grunfeld_PanelData_2006_2025.csv"); dat<-dat[order(dat$firm,dat$year),]; for(v in c("invest","value","capital")) dat[[paste0("l",v)]]<-log(dat[[v]])
+for(v in c("invest","value","capital")){ lv<-paste0("l",v); dat[[paste0("d",lv)]]<-ave(dat[[lv]],dat$firm,FUN=function(z)c(NA,diff(z))) }; sh<-subset(dat,complete.cases(dlinvest,dlvalue,dlcapital)); m<-lm(dlinvest~dlvalue+dlcapital,data=sh); pd<-plm::pdata.frame(sh,index=c("firm","year")); mp<-plm::plm(dlinvest~dlvalue+dlcapital,data=pd,model="pooling"); stopifnot(max(abs(unname(coef(m))-unname(coef(mp))))<1e-10)

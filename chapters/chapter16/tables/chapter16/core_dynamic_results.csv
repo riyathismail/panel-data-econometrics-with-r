@@ -1,0 +1,5 @@
+"model","lag_estimate","observations"
+"pooled_dynamic_level",0.939767780007154,190
+"twoway_FE_dynamic_level",0.593787697757178,190
+"dynamic_growth",-0.00557670224708644,180
+"Anderson_Hsiao_IV",0.498599062671393,180

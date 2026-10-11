@@ -1,0 +1,320 @@
+CHAPTER 23 NUMERICAL, ECONOMETRIC, AND EVIEWS VERIFICATION
+==========================================================
+
+Chapter:
+  Limited Dependent Variables and Nonlinear Panel Models
+
+Base dataset:
+  Grunfeld_PanelData_2006_2025.csv
+
+Derived teaching dataset:
+  Grunfeld_Binary_Teaching.csv
+
+Case-data convention
+--------------------
+- The base data are the classic 10-firm Grunfeld investment panel.
+- Original Grunfeld years 1935-1954 are relabelled 2006-2025 only as
+  sequential teaching-period identifiers.
+- invest  = real gross investment.
+- value   = real market value of the firm.
+- capital = real stock of plant and equipment.
+- Raw monetary levels are in millions of 1947 dollars.
+- The base file contains no native binary, count, fractional, ordered,
+  censored, selected, or duration outcome.
+- The binary case is therefore explicitly derived as:
+      pos_invest_growth_it = 1[Delta ln(invest_it) > 0]
+- Count and other limited-outcome models remain conceptual because the base
+  data do not contain defensible native outcomes of those types.
+
+Binary outcome audit
+--------------------
+Usable firm-period observations: 190
+Positive investment-growth events: 117
+Non-events: 73
+Overall event rate: 0.615789474
+
+Positive-growth counts by firm:
+firm
+1     15
+2     10
+3     11
+4     10
+5     10
+6     15
+7     12
+8     12
+9     11
+10    11
+
+Teaching-period event rates:
+year
+2007    0.7
+2008    0.8
+2009    0.1
+2010    0.5
+2011    0.8
+2012    0.9
+2013    0.1
+2014    0.5
+2015    0.7
+2016    0.7
+2017    0.8
+2018    0.4
+2019    0.6
+2020    0.3
+2021    0.6
+2022    1.0
+2023    0.9
+2024    0.9
+2025    0.4
+
+Teaching label 2022 corresponds to original Grunfeld year 1951.
+All 10 firms have positive gross-investment growth at that label.
+An unrestricted 2022 period indicator is therefore one only for successes,
+creating perfect prediction / quasi-complete separation for that coefficient.
+
+Two-way fixed-effects LPM
+-------------------------
+Dependent variable: pos_invest_growth
+Regressors: gvalue, gcapital
+Firm effects: yes
+Period effects: yes
+Observations: 190
+
+gvalue coefficient   = 0.958795342
+gcapital coefficient = -0.098249288
+
+Fitted-probability range:
+  minimum = -0.320078285
+  maximum = 1.384325680
+Observations outside [0,1]:
+  19
+
+Firm-cluster covariance:
+  gvalue   SE=0.317917447, t=3.015862610, p=0.0145767018
+  gcapital SE=0.088105518, t=-1.115132060, p=0.29368357
+
+Period-cluster covariance:
+  gvalue   SE=0.170861482, t=5.611535909, p=2.52113186e-05
+  gcapital SE=0.112104655, t=-0.876406856, p=0.392355229
+
+Two-way-cluster covariance:
+  gvalue   SE=0.292930647, t=3.273113792, p=0.00963466486
+  gcapital SE=0.110654621, t=-0.887891417, p=0.397706712
+
+Firm-dummy logit with teaching-period trend
+-------------------------------------------
+Specification:
+  Pr(pos_invest_growth=1) =
+      Lambda(alpha_i + betaV*gvalue + betaK*gcapital + gamma*trend)
+
+betaV = 6.235810524
+betaK = -0.888360703
+gamma = 0.031538283
+
+Full log likelihood: -99.513001263
+Intercept-only log likelihood: -126.556684152
+Standard McFadden pseudo-R2:
+  0.213688302
+
+Firm-effects-plus-trend restricted log likelihood:
+  -121.937712357
+LR test for gvalue and gcapital:
+  LR = 44.849422189
+  chi-square(2) p = 1.8241969005e-10
+
+Incremental likelihood index relative to the firm-effects-plus-trend model:
+  1 - ell_full/ell_restricted = 0.183903000
+
+Logit covariance sensitivity
+----------------------------
+Firm cluster:
+  gvalue   SE=1.456111337, z=4.282509425,
+           normal p=1.84797302e-05,
+           t9 sensitivity p=0.00204241307
+  gcapital SE=0.443535499, z=-2.002907784,
+           normal p=0.0451871875,
+           t9 sensitivity p=0.0761947377
+  trend    SE=0.026660951
+
+Period cluster:
+  gvalue   SE=1.427449448
+  gcapital SE=0.513778107,
+           normal p=0.0837957348
+
+Two-way firm + period sandwich:
+  gvalue   SE=1.656720394
+  gcapital SE=0.477264289,
+           normal p=0.0626933415
+
+The two-way logit covariance is an independent sandwich replication; current
+EViews binary syntax documents one-way cluster robust covariance via
+cov=cr, crname=..., not the linear panel command's cov=bothcluster option.
+
+Odds ratios and probability effects
+-----------------------------------
+10% firm-market-value increase:
+  Delta ln(value) = ln(1.10) = 0.095310180
+
+Logit odds ratio for gvalue:
+  exp(betaV*ln(1.10)) = 1.811827895
+
+Logit odds ratio for gcapital:
+  exp(betaK*ln(1.10)) = 0.918815610
+
+Logit AMEs:
+  gvalue   = 1.094722339
+  gcapital = -0.155955397
+  trend    = 0.005536676
+
+Exact average discrete probability change from a 10% value increase:
+  0.097995928
+  = 9.7996 percentage points
+
+Firm-dummy probit sensitivity
+-----------------------------
+gvalue coefficient   = 3.715630862
+gcapital coefficient = -0.526048253
+trend coefficient    = 0.023000731
+
+Probit AME gvalue   = 1.093494189
+Probit AME gcapital = -0.154813739
+Exact average probability change for a 10% value increase:
+  0.098447581
+  = 9.8448 percentage points
+
+Conditional fixed-effects logit
+-------------------------------
+All 10 firms have both outcomes, so no firm is dropped.
+
+gvalue:
+  coefficient = 5.850297170
+  SE          = 1.128894910
+  z           = 5.182322216
+  p           = 2.19140212e-07
+
+gcapital:
+  coefficient = -0.835535254
+  SE          = 0.582749417
+  z           = -1.433781365
+  p           = 0.151634664
+
+trend:
+  coefficient = 0.029515925
+  SE          = 0.032848435
+  p           = 0.368893002
+
+Conditional-logit odds ratio for a 10% value increase:
+  1.746463481
+
+Prediction and calibration
+--------------------------
+Classification cutoff: 0.5
+TN=36, FP=37, FN=21, TP=96
+Accuracy    = 0.694736842
+Sensitivity = 0.820512821
+Specificity = 0.493150685
+
+AUC        = 0.801662569
+Brier score= 0.177447089
+Log loss   = 0.523752638
+
+In-sample calibration quintiles:
+                   n  mean_pred  event_rate
+bin                                        
+(0.00643, 0.385]  38   0.226217    0.263158
+(0.385, 0.6]      38   0.496308    0.421053
+(0.6, 0.731]      38   0.660685    0.605263
+(0.731, 0.832]    38   0.779461    0.842105
+(0.832, 0.999]    38   0.916275    0.947368
+
+These are in-sample diagnostics, not time-ordered forecast validation.
+
+Leave-one-firm-out logit sensitivity
+------------------------------------
+gvalue coefficient range:
+  [5.369206723, 6.806538090]
+
+gcapital coefficient range:
+  [-1.096466967, -0.535680545]
+
+Current EViews documentation checks
+-----------------------------------
+1. Equation::binary
+   - Syntax: eq_name.binary(options) y x1 [x2 ...].
+   - d=l specifies logit; d=n specifies probit.
+   - cov=cr requests cluster-robust covariance.
+   - crname=series specifies the one-way cluster identifier.
+   - crtype=cr1 is the documented finite-sample cluster weighting default.
+   - m=integer sets the maximum number of iterations.
+   - The documented binary method is a general single-equation estimator;
+     panel fixed/random effects are not automatically invoked by workfile
+     structure.
+
+2. Equation::fit
+   - For binary models, default fit saves fitted probabilities.
+   - fit(i) saves the fitted index.
+   - Logistic density @dlogistic(index) can be used for manual AMEs.
+
+3. Equation::predict
+   - Displays the binary prediction/classification table.
+   - The success cutoff defaults to 0.5 and may be supplied explicitly.
+
+4. Equation::count / count
+   - Supports Poisson, negative-binomial, and count QML specifications.
+   - Current documented covariance choices include ordinary, Huber-White, and
+     GLM methods.
+   - The current count syntax does not list binary's cov=cr/crname one-way
+     cluster-robust option.
+   - The standard count command does not automatically implement conditional
+     fixed-effects Poisson merely because the workfile is panel structured.
+
+Official EViews documentation checked:
+  https://www.eviews.com/help/content/equationcmd-binary.html
+  https://www.eviews.com/help/content/equationcmd-predict.html
+  https://help.eviews.com/content/commandcmd-fit.html
+  https://www.eviews.com/help/content/commandcmd-count.html
+  https://www.eviews.com/help/content/equationcmd.html
+  https://eviews.com/help/content/mathapp-Statistical_Distribution_Functions.html
+
+Editorial verification
+----------------------
+- Unit terminology changed to Chapter terminology.
+- unit23 figure paths migrated to chapter23.
+- Capital/CapEx/BookVal disguised names removed.
+- The binary target is positive gross-investment growth, not positive capital growth.
+- gvalue is firm-market-value growth.
+- gcapital is capital-stock growth.
+- "year clustering/effects" in the teaching narrative were replaced by period
+  clustering/effects.
+- Teaching label 2022 is explicitly mapped to original Grunfeld 1951 and is
+  never interpreted as a modern event.
+- The pseudo-R2 discussion now distinguishes standard McFadden R2 (0.2137)
+  from the incremental likelihood index relative to firm effects + trend
+  (0.1839).
+- Complete separation wording was tightened to perfect prediction /
+  quasi-complete separation for the 2022 period indicator.
+- The count example no longer uses unsupported cov=cr syntax.
+- The applied exercise now uses Grunfeld_Binary_Teaching.csv.
+- The bridge correctly points to Chapter 24, Final Capstone and Comprehensive Review.
+
+PDF verification
+----------------
+- Final standalone PDF: 18 A4 pages.
+- Compiled twice after the final edits.
+- No LaTeX errors.
+- No undefined references.
+- No overfull or underfull box warnings.
+- All 18 pages rendered at 170 dpi.
+- Full contact-sheet montage visually inspected.
+- Dense EViews code pages 14-15 inspected at full-page resolution.
+- Longtable page 16 and conclusion/reference pages 17-18 inspected.
+- No clipped text, table overflow, code clipping, figure overlap, broken
+  glyphs, or running-header collision observed.
+
+Environment note
+----------------
+EViews is not installed in this execution environment. Current EViews syntax
+and feature semantics were checked against official EViews documentation.
+All reported empirical quantities were independently reconstructed from the
+revised Grunfeld teaching CSV.

@@ -1,0 +1,1 @@
+Optional pgmm teaching run skipped. Set RUN_CH16_GMM=1 after reviewing the small-N warning.

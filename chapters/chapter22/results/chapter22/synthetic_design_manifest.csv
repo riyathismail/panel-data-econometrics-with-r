@@ -1,0 +1,2 @@
+"treated_firms","first_treatment_teaching","first_treatment_original","planted_log_effect","n_growth","n_treated","n_control","n_treated_post","raw_did","adjusted_did","assignment_reference_p","wild_cluster_t_p"
+"1;2;3;4;5",2018,1947,0.08,190,95,95,40,0.0641436690649479,0.080589996522304,0.19047619047619,0.17578125

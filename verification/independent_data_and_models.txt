@@ -1,0 +1,4 @@
+PASS: all 24 teaching panels match original plm Grunfeld values.
+PASS: years are deliberately relabelled by +71; not contemporary data.
+PASS: demeaning algebra matches dummy-variable firm FE.
+PASS: independent sandwich implementation matches capstone cluster standard errors.

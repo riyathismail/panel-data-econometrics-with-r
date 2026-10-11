@@ -1,0 +1,22 @@
+During startup - Warning messages:
+
+1: Setting LC_COLLATE=C.UTF-8 failed 
+
+2: Setting LC_CTYPE=C.UTF-8 failed 
+
+3: Setting LC_MONETARY=C.UTF-8 failed 
+
+4: Setting LC_TIME=C.UTF-8 failed 
+
+Warning message:
+
+In dir.create(dn, recursive = TRUE) :
+
+  cannot create dir 'C:\Users\MSI\AppData\Roaming\R\config\R\marginaleffects', reason 'Permission denied'
+
+boundary (singular) fit: see help('isSingular')
+
+boundary (singular) fit: see help('isSingular')
+
+Chapter 23 benchmark reproduced successfully.
+

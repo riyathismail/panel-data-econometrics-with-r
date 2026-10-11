@@ -1,0 +1,24 @@
+During startup - Warning messages:
+
+1: Setting LC_COLLATE=C.UTF-8 failed 
+
+2: Setting LC_CTYPE=C.UTF-8 failed 
+
+3: Setting LC_MONETARY=C.UTF-8 failed 
+
+4: Setting LC_TIME=C.UTF-8 failed 
+
+Warning message:
+
+package 'plm' was built under R version 4.5.3 
+
+null device 
+
+          1 
+
+null device 
+
+          1 
+
+Chapter 16 static/dynamic-OLS/IV benchmarks reproduced. Optional pgmm teaching run status recorded.
+

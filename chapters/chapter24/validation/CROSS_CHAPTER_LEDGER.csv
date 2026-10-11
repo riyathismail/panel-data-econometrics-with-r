@@ -1,0 +1,25 @@
+chapter,topic,benchmark,verified_value,capstone_role
+1,Foundations,Pooled level OLS,value=0.11556; capital=0.23068; R2=0.8124,baseline regression mechanics
+2,Panel structure,Balanced panel,10 firms x 20 periods; 200 levels,panel indexing and variation
+3,Audit and EDA,First differences,190 valid within-firm transitions,data integrity
+4,Stationarity,Persistence and dependence,logged levels highly persistent; differences materially less persistent,equation-form gate
+5,Model construction,Short-run pooled FD,dlvalue=0.578846; dlcapital=-0.072917,short-run candidate
+6,Pooled OLS,Short-run baseline,R2=0.230661,benchmark estimator
+7,Error components,ICC in logged invest,0.913406 descriptive ICC,heterogeneity diagnosis
+8,First differences,Period effects after FD,"F(18,169)=4.844947",period effects required
+9,Fixed effects,One-way FE,lvalue=0.591847; lcapital=0.255918,within estimator
+10,Random effects,Swamy-Arora RE,theta=0.868933; lvalue=0.662453,RE bridge
+11,Model selection,Hausman,chi2(2)=7.715151; p=0.021119,reject conventional RE orthogonality at 5%
+12,Diagnostics,Growth RESET / CD,RESET p=0.61493; CD p=0.00202,retain mean; robust inference needed
+13,Robust inference,Primary period cluster,SE(dlvalue)=0.074336; SE(dlcapital)=0.041927,main covariance
+14,Reporting,Exact 10% value change,4.838% fitted investment-growth-factor change,effect interpretation
+15,Integrated workflow,Targets-style pipeline,raw data -> validation -> inference -> outputs,reproducibility
+16,Dynamic panels,Lagged growth / weak IV,lag p=0.955; AH first-stage F=2.10,do not replace main model
+17,Cointegration/ECM,Conditional DOLS/ECM,DOLS value=0.335917; ECT=-0.406000,conditional long-run branch
+18,Forecasting,Rolling ex-ante RMSE,0.20495 vs zero-growth 0.22644,distinct forecasting estimand
+19,PVAR,Robust predictive direction,investment growth -> capital growth,predictive not structural
+20,Heterogeneity,Common-slope test,"F(18,142)=1.369426; p=0.155727",common slopes not rejected
+21,Structural stability,Unknown-date sup-F bootstrap,p=0.3894,no convincing common slope break
+22,DiD,Synthetic common adoption,tau=0.080590; firm-cluster p=0.1913,teaching causal design only
+23,Nonlinear panel,Positive-growth logit,AME dlvalue=1.094722; AUC=0.80166,probability estimand
+24,Capstone,Principal short-run model,dlvalue=0.495709; dlcapital=-0.085693,integrated conclusion

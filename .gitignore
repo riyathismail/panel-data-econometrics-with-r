@@ -1,0 +1,9 @@
+# Local R state and installed dependencies
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+renv/library/
+renv/staging/
+_targets/
+isolated_targets/

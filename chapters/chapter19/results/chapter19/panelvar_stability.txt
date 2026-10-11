@@ -1,0 +1,9 @@
+Eigenvalue stability condition:
+
+              Eigenvalue   Modulus
+1  0.02693294+0.2702646i 0.2716033
+2  0.02693294-0.2702646i 0.2716033
+3 -0.17053163+0.0000000i 0.1705316
+
+All the eigenvalues lie inside the unit circle.
+PVAR satisfies stability condition.

@@ -1,0 +1,9 @@
+"estimator","regressor","estimate"
+"Pooled","log(value)",0.773256744482065
+"Pooled","log(capital)",0.380533499740077
+"Between","log(value)",0.747012585372114
+"Between","log(capital)",0.461704999951465
+"Random effects","log(value)",0.662453320092063
+"Random effects","log(capital)",0.255515457856758
+"Fixed effects","log(value)",0.591847307139804
+"Fixed effects","log(capital)",0.255918016449478
