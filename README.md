@@ -2,6 +2,13 @@
 
 Author: Dr. M.I.M. Riyath. Prepared for https://github.com/riyathismail.
 
+## Download
+
+[Download the verified companion ZIP](https://github.com/riyathismail/panel-data-econometrics-with-r/releases/download/v1.0.0/Panel_Data_Econometrics_with_R_Companion.zip)
+or visit the [latest release](https://github.com/riyathismail/panel-data-econometrics-with-r/releases/latest).
+The release also provides a SHA-256 checksum. This public repository contains
+the same verified scripts and datasets for browsing by chapter.
+
 Each chapter is an independent RStudio project. Open its folder, restore
 dependencies with `source("restore_environment.R")`, then execute
 `source("R/chapterXX.R")`, replacing XX with the chapter number. R 4.5.2 is
